@@ -8,7 +8,7 @@ if (!$db){
 }
 else {
 	mysql_select_db("restaurant",$db);
-	$res = mysql_query("SELECT Login, Password FROM usuarios WHERE login = '$login' and password = '".MD5($pass)."'", $db);
+	$res = mysql_query("SELECT Login, Password FROM usuarios WHERE login = '$login' and password = '".($pass)."'", $db);
 	if($res != false){
 		if(mysql_num_rows($res)>0)
 		{
