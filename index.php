@@ -4,7 +4,7 @@
 </head>
 <body>
 <h1>Iniciar Sesion</h1>
-<form action="control.php" method="POST">
+<form action="controlInicioSesion.php" method="POST">
 <table align="center" width="225" cellspacing="2" cellpadding="2" border="0">
 <tr>
     <td colspan="2" align="center" 
