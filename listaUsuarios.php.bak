@@ -71,9 +71,6 @@
 			</FORM>
 		
 <form action="principalMARKETING.php"><h1>Enterate de los descuentos de este mes!</h1><input type=submit  value=Entrar></form>
-<br>
-<form action="HorarioAtencion.php"><h1>Horarios de atencion</h1><input type=submit  value=Ir></form>
-
 	</CENTER>
 	</BODY>
 </HTML>

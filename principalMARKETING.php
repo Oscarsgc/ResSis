@@ -7,8 +7,8 @@
 				<frame src=MenuSuscripcion.php name=SUSCRIPCION>
 			</frameset>
 				<frameset cols=50,50 frameborder=3 color=#663366>
-					<frame src=MenuPromocion.php name=PROMOCION>
-					<frame src=MenuCombos.php name=COMBOS>
+					<frame scrolling=no src=MenuPromocion.php name=PROMOCION>
+					<frame scrolling=no src=MenuCombos.php name=COMBOS>
 				</frameset>
 		</frameset>
 </head>

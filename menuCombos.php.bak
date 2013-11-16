@@ -13,7 +13,7 @@
 	var myCombos=["Combos/c2.png","Combos/c1.png","Combos/c3.jpg","Combos/c4.jpg"] 
 	//var Combos=["Descripcion combo 2","Descripcion combo 1","Descripcion combo 3","Descripcion combo 4"]
 	var ind=Math.floor(Math.random() * myCombos.length); 
-	document.iCombos.src=myCombos[ind];
+	document.iCombos.src=myArray[ind];
 	 //confirm(Combos[ind])
  }
  function adminCombos()

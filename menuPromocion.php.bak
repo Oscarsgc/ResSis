@@ -33,7 +33,7 @@ function getDescripcion()
  <body bgcolor=#ff0000>
 <h1 align=center >Promociones del Mes</h1>
 <form name=P id=P>
-<IMG name="Promos" SRC="Promociones/p3.png" onmouseout=myPromos()  ondblclick=adminPromos() Height="280" Width="500" id="iPromos"> 
+<IMG name="Promos" SRC="Promociones/p3.png" onmouseout=myPromos() onclick=getDescripcion() ondblclick=adminPromos() Height="280" Width="500" id="iPromos"> 
 </form>
  </body>
 </html>

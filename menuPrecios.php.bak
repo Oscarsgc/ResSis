@@ -8,7 +8,7 @@
   <meta name="Description" content="">
  </head>
 
- <body bgcolor=#0000ff>
+ <body>
   		<?php
 		function llenarMenu()
 		{
@@ -29,7 +29,7 @@
 
 
 		<h1 color+#660033 align=center> MENU </h1>
-			<TABLE BORDER=3 align=center bgcolor=#ffffff>
+			<TABLE BORDER=3 align=center>
 				<TR>
 					<TD>Codigo</TD>
 					<TD>Plato</TD>
