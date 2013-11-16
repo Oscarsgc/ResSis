@@ -11,11 +11,10 @@
 
 			while($row=mysql_fetch_row($res)){
 				echo "<TR>";
-				echo "<TD>".$row[1]."</TD>";	
+				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
 				echo "<TD>".$row[4]."</TD>";	
-				echo "<TD>".$row[5]."</TD>";	
 				echo "</TR>";
 				
 			}
@@ -37,25 +36,23 @@
 			$res=mysql_query("SELECT * FROM usuarios WHERE Nombre like '%$buscar%'", $db);
 			while($row=mysql_fetch_row($res)){
 				echo "<TR>";
-				echo "<TD>".$row[1]."</TD>";	
+				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
-				//echo "<TD>".$row[4]."</TD>";	
-				//echo "<TD>".$row[5]."</TD>";	
+				echo "<TD>".$row[4]."</TD>";	
 				echo "</TR>";
 				
 			}
 		}
 		
-		
 		?>
 			<TABLE BORDER=3>
 				<TR>
 					<TD>Login</TD>
+					<TD>Ci</TD>
 					<TD>Nombre</TD>
-					<TD>CI</TD>
-					<TD></TD>
-					<TD></TD>
+					<TD>Correo</TD>
+					<TD>Rol</TD>
 				</TR>
 				<?php
 				if(isset($_POST["Buscar"]))

@@ -2,9 +2,10 @@
 	$login = $_POST["usuario"];
 	$pass = $_POST["contrasena"];
 	$nombre = $_POST["nombre"];
-	//$telefono = $_POST["telefono"];
-	//$direccion = $_POST["direccion"];
-	//$sexo = $_POST["sexo"];
+	$correo = $_POST["correo"];
+	$ci = $_POST["ci"];
+	$rol = $_POST["rol"];
+	$estado = $_POST["estado"];
 	$db = mysql_connect("localhost", "root", "");
 	if (!$db){
 		echo "error en base de datos: ".mysql_error($db);
@@ -20,7 +21,7 @@
 			}
 			else
 			{
-				//$res = mysql_query("INSERT INTO usuarios VALUES ('NULL','$login', '$nombre', '$telefono', '$direccion', '$sexo', MD5('$pass'))", $db);
+				$res = mysql_query("INSERT INTO usuarios VALUES ('$login', MD5('$pass'), '$ci', '$nombre', '$correo', '$rol', '$estado')", $db);
 				if($res != false){
 					mysql_close($db);
 					echo "Usuario Creado";

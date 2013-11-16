@@ -3,6 +3,7 @@
 	$precio = $_POST["precio"];
 	$nombre = $_POST["nombre"];
 	$tipo = $_POST["tipo"];
+	$estado = $_POST["estado"];
 	$db = mysql_connect("localhost", "root", "");
 	if (!$db){
 		echo "error en base de datos: ".mysql_error($db);
@@ -18,7 +19,7 @@
 			}
 			else
 			{
-				$res = mysql_query("INSERT INTO productos VALUES ('$codigo','$nombre', '$tipo', '$precio')", $db);
+				$res = mysql_query("INSERT INTO productos VALUES ('$codigo','$nombre', '$tipo', '$precio', '$estado')", $db);
 				if($res != false){
 					mysql_close($db);
 					echo "Producto Creado";
