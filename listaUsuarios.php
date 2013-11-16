@@ -5,7 +5,7 @@
 	<BODY>
 		<?php
 		function llenarTabla(){
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM usuarios", $db);
 
@@ -15,6 +15,7 @@
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
 				echo "<TD>".$row[4]."</TD>";	
+				echo "<TD>".$row[5]."</TD>";	
 				echo "</TR>";
 				
 			}
@@ -31,7 +32,7 @@
 		<?php
 			function llenarTablaBusqueda(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM usuarios WHERE Nombre like '%$buscar%'", $db);
 			while($row=mysql_fetch_row($res)){
@@ -40,6 +41,7 @@
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
 				echo "<TD>".$row[4]."</TD>";	
+				echo "<TD>".$row[5]."</TD>";	
 				echo "</TR>";
 				
 			}

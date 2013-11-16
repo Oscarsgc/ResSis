@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `combo` (
 -- Estructura de tabla para la tabla `combo_prodcuto`
 --
 
-CREATE TABLE IF NOT EXISTS `combo_prodcuto` (
+CREATE TABLE IF NOT EXISTS `combo_producto` (
   `cod_combo_producto` bigint(20) NOT NULL AUTO_INCREMENT,
   `cod_combo` int(8) NOT NULL,
   `cod_producto` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `promocion_producto` (
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `login` varchar(12) COLLATE latin1_spanish_ci NOT NULL,
-  `password` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
+  `password` varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   `ci` bigint(12) NOT NULL,
   `nombre` varchar(40) COLLATE latin1_spanish_ci NOT NULL,
   `correo` varchar(30) COLLATE latin1_spanish_ci NOT NULL,

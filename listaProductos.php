@@ -5,7 +5,7 @@
 	<BODY>
 		<?php
 		function llenarTabla(){
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM productos", $db);
 			while($row=mysql_fetch_row($res)){
@@ -30,7 +30,7 @@
 		<?php
 			function llenarTablaBusqueda(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM productos WHERE nombre like '%$buscar%'", $db);
 			while($row=mysql_fetch_row($res)){

@@ -6,7 +6,7 @@
 	$ci = $_POST["ci"];
 	$rol = $_POST["rol"];
 	$estado = $_POST["estado"];
-	$db = mysql_connect("localhost", "root", "");
+	$db = mysql_connect("localhost", "root", "root");
 	if (!$db){
 		echo "error en base de datos: ".mysql_error($db);
 	}
@@ -24,7 +24,7 @@
 				$res = mysql_query("INSERT INTO usuarios VALUES ('$login', MD5('$pass'), '$ci', '$nombre', '$correo', '$rol', '$estado')", $db);
 				if($res != false){
 					mysql_close($db);
-					echo "Usuario Creado";
+					//echo "Usuario Creado";
 					header ("Location: listaUsuarios.php");
 				}else {
 					//si no existe le mando otra vez a la portada
