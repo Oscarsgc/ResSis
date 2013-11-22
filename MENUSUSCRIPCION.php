@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  <head>
-  <title> MenuPrecios </title>
+  <title> MenuSuscripcion </title>
   <meta name="Generator" content="EditPlus">
   <meta name="Author" content="">
   <meta name="Keywords" content="">
@@ -14,7 +14,7 @@
  </script>
  </head>
 
- <body>
+ <body bgcolor=#cc9900>
 <h2 color=#339933 align=LEFT>SUSCRIBETE</h2>
 <form action=Suscripcion() method="POST">
 <table align="LEFT" width="225" cellspacing="2" cellpadding="2" border="0">

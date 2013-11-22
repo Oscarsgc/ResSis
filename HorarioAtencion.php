@@ -8,11 +8,14 @@
   <meta name="Description" content="">
  </head>
 
- <body>
-	<h1> Horario de Atencion</h1>
-	<br>
-	<br>
-<h2>
+ <body align=center background=r.jpg>
+	
+	<br><br><br><br><br><br>
+
+	<table align=center bgcolor=#cccc00>
+	<tr><td bgcolor=#cc6600><><h1> Horario de Atencion</h1>
+	
+<h2 color=#ffffff >
 <?php
 
 $file=fopen("Horarios.txt","r+") or exit ("No se pudo abrir el documento Horarios.txt =(");
@@ -22,6 +25,8 @@ while(!feof($file))
   }
 fclose($file);
 ?>
-</h2>
+	</tr></td>
+ 
+</table>
  </body>
 </html>

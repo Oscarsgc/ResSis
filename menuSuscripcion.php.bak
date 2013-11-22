@@ -30,7 +30,7 @@
     <td><input type="Text" name="zona" size="8" maxlength="50"></td>
 </tr>
 <tr>
-    <td colspan="2" align="LEFT"><input type="Submit" value="ENVIAR MI INFO"></td>
+    <td colspan="2" align="LEFT"><input type="Submit" onclick=Suscripcion() value="ENVIAR MI INFO"></td>
 </tr>
 </table>
 </form>

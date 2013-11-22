@@ -8,19 +8,19 @@
   <meta name="Description" content="">
  </head>
 
- <body bgcolor=#0000ff>
+ <body background=r.jpg>
   		<?php
 		function llenarMenu()
 		{
 			$db = mysql_connect("localhost", "root", "");
 			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM productos SORT BY Tipo", $db);
-			while($row=mysql_fetch_row($res))
+			$res=mysql_query("SELECT * FROM producto ORDER BY tipo", $db);
+			while($fila=mysql_fetch_assoc($res))
 				{
 					echo "<TR>";
-					echo "<TD>".$row[0]."</TD>";	
-					echo "<TD>".$row[1]."</TD>";	
-					echo "<TD>".$row[3]."</TD>";	
+					echo "<TD>".$fila['nombre']."</TD>";	
+					//echo "<TD>".$fila['descripcion']."</TD>";	
+					echo "<TD>".$fila['precio']."</TD>";	
 					echo "</TR>";
 				
 				}
@@ -28,10 +28,9 @@
 		?>
 
 
-		<h1 color+#660033 align=center> MENU </h1>
-			<TABLE BORDER=3 align=center bgcolor=#ffffff>
+		<h1   align=center> --MENU-- </h1>
+			<TABLE BORDER=3 bgcolor=#cc9900 align=center>
 				<TR>
-					<TD>Codigo</TD>
 					<TD>Plato</TD>
 					<TD>Precio</TD>
 				</TR>
