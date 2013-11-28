@@ -22,7 +22,7 @@
 				$res = mysql_query("INSERT INTO producto VALUES ('$codigo','$nombre', '$tipo', '$precio', '$estado')", $db);
 				if($res != false){
 					mysql_close($db);
-					echo "Producto Creado";
+					printf("Producto Creado");
 					header ("Location: listaProductos.php");
 				}else {
 					//si no existe le mando otra vez a la portada
@@ -35,7 +35,6 @@
 					echo "error en base de datos:".mysql_error($db);
 					mysql_close($db);
 				}		
-
 		echo "<a href='ListaProductos.php'>Ver Tabla</a>";
 	}
 ?>
