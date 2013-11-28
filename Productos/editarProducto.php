@@ -13,7 +13,6 @@
 		<form action="guardarProductoEditado.php" method="POST">
   			Codigo: <input type="text" name="codigo" value="<?php echo $data[cod_producto]?>"/> </br>
   			Nombre: <input type="text" name="nombre" value="<?php echo $data[nombre]?>"/> </br>
-  			<!--Tipo: <input type="text" name="tipo" value="<?php echo $data[tipo]?>"/></br-->
   			Tipo: <SELECT NAME="tipo" value="<?php echo $data[tipo]?>" SIZE=1>
 				<OPTION VALUE="1">Plato</OPTION>
 				<OPTION VALUE="2">Bebida</OPTION>
