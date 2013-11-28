@@ -23,7 +23,7 @@
   			Estado: <input type="text" name="estado" value="<?php echo $data[estado]?>"/></br>
   			<input type="Submit" name="Guardar" value="Guardar">
 		</form>
-		<form action="tabla.php">
+		<form action="listaProductos.php">
 			<input type = "submit" name="Cancelar" value = "Cancelar">
 		</form>
 </BODY>
