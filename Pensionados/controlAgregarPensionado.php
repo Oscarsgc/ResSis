@@ -5,7 +5,7 @@
 	$direccion = $_POST["direccion"];
 	$telefono = $_POST["telefono"];
 	$estado = $_POST["estado"];
-	$db = mysql_connect("localhost", "root", "root");
+	$db = mysql_connect("localhost", "root", "");
 	if (!$db){
 		echo "error en base de datos: ".mysql_error($db);
 	}

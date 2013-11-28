@@ -1,0 +1,24 @@
+<html>
+ <head>
+  <?php include ("seguridad.php");?>
+  <title> Reservar Mesa </title>
+ </head>
+ <body>
+ <h1 align="center" > Reservar Mesa </h1>
+   <form action="guardar_reserva.php" method="post">
+	Numero de Mesa:
+	<input id="mesa" name="mesa" type="text"/><br><br>
+	Nombre:
+	<input id="nombre" name="nombre" type="text"/><br><br>
+	Fecha:
+	<input id="fecha" name="fecha" type="date"/><br><br>
+	Hora:
+	<input type="time" name="hora" id="hora"><br><br>
+	<input id="reservar" name="reservar" value="Reservar" type="submit"/>
+  </form>
+  <br>
+  <a href="lista_reservas.php"> Lista de Reservas </a>
+  <br>
+  <a href="salir.php"> Salir </a>
+ </body>
+</html>
