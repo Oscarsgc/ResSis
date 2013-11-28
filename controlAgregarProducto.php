@@ -10,7 +10,7 @@
 	}
 	else {
 		mysql_select_db("restaurant",$db);
-		$res2 = mysql_query("SELECT codigo FROM productos WHERE codigo = '$codigo'", $db);
+		$res2 = mysql_query("SELECT cod_producto FROM producto WHERE cod_producto = '$codigo'", $db);
 		if($res2 != false){
 			if(mysql_num_rows($res2)>0)
 			{
@@ -19,7 +19,7 @@
 			}
 			else
 			{
-				$res = mysql_query("INSERT INTO productos VALUES ('$codigo','$nombre', '$tipo', '$precio', '$estado')", $db);
+				$res = mysql_query("INSERT INTO producto VALUES ('$codigo','$nombre', '$tipo', '$precio', '$estado')", $db);
 				if($res != false){
 					mysql_close($db);
 					echo "Producto Creado";
@@ -35,6 +35,8 @@
 					echo "error en base de datos:".mysql_error($db);
 					mysql_close($db);
 				}		
+
+		echo "<a href='ListaProductos.php'>Ver Tabla</a>";
 	}
 ?>
 

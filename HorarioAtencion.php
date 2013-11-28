@@ -13,7 +13,7 @@
 	<br><br><br><br><br><br>
 
 	<table align=center bgcolor=#cccc00>
-	<tr><td bgcolor=#cc6600><><h1> Horario de Atencion</h1>
+	<tr><td bgcolor=#cc6600><h1> Horario de Atencion</h1>
 	
 <h2 color=#ffffff >
 <?php

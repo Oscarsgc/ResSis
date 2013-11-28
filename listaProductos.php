@@ -1,26 +1,28 @@
 <HTML>
 	<HEAD>
-		<TITLE>Lista de Usuarios</TITLE>
+		<TITLE>Lista de Productos</TITLE>
 	</HEAD>
 	<BODY>
 		<?php
 		function llenarTabla(){
 			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM productos", $db);
+			$res=mysql_query("SELECT * FROM producto", $db);
 			while($row=mysql_fetch_row($res)){
+				$id=$row[0];
 				echo "<TR>";
 				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[1]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
+				echo "<TD>"."<a href=\"editarProducto.php?aux=$id\">Modificar</a>"."</TD>";	
 				echo "</TR>";
 				
 			}
 		}
 		?>
 
-		<CENTER><H1>Lista de Usuarios</H1>
+		<CENTER><H1>Lista de Productos</H1>
 
 		<FORM NAME="Datos" Method="POST" Action="listaProductos.php">
 			Buscar: <INPUT TYPE=Text NAME="buscar" VALUE=""><BR>
@@ -32,13 +34,15 @@
 			$buscar = $_POST["buscar"];
 			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM productos WHERE nombre like '%$buscar%'", $db);
+			$res=mysql_query("SELECT * FROM producto WHERE nombre like '%$buscar%'", $db);
 			while($row=mysql_fetch_row($res)){
+				$id=$row[0];
 				echo "<TR>";
 				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[1]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
+				echo "<TD>"."<a href=\"editar.php?aux=$id\">Modificar</a>"."</TD>";	
 				echo "</TR>";
 				
 			}
