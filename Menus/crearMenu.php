@@ -1,44 +1,44 @@
 <HTML>
 	<HEAD>
+	<?php require("../conexion_db.php"); ?>
 		<TITLE>Crear Menu Del Dia</TITLE>
-		<script type="text/javascript">
+	<?php
+		$resultSet=array();
+		$res=mysql_query("SELECT nombre, cod_producto FROM producto where estado='1' and tipo='1'");
+		while($row = mysql_fetch_row($res))
+		{
+	   		$resultSet[] = $row;
+		}
+		function espacio() {
 
+		}
+	?>
+
+	<script type="text/javascript">
     	var c=0;
-     
-		function addSelectBox (arreglo)
+		function addSelectBox ()
         {
-       		
-            var parentDiv = document.getElementById ("main");
-            var selectElement = document.createElement ("select");
-            selectElement.setAttribute("name", "Producto"+c);
+        	var arreglo = <?php echo json_encode($resultSet); ?>;
+        	var parentDiv = document.getElementById ("main")
+			var element = document.createElement ("select");
+            element.setAttribute("name", "Producto"+c);
             c=c+1;
             for (var i=0;i < arreglo.length;i++)
             {
-                var option = new Option (arreglo[i], arreglo[i]);
-                selectElement.options[selectElement.options.length] = option;
+                var option = new Option (arreglo[i][0], arreglo[i][1]);
+                element.options[element.options.length] = option;
             }
-            parentDiv.appendChild(selectElement);
-
+            parentDiv.appendChild (element);
+            element = document.createElement('br');
+			parentDiv.appendChild(element);
+			element = document.createElement('br');
+			parentDiv.appendChild(element);
         }
+
     </script>
 
-		<?php
-		$resultSet=array();
-		function leerDeBaseProductos(){
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT nombre, cod_producto FROM producto where estado='1' and tipo='1'", $db);
-			
-			while($row = mysql_fetch_assoc($res))
-			{
-    			$resultSet[] = $row;
-			}
-			return $resultSet;
-		}
-		?>
 	</HEAD>
 	<BODY>
-	<?php leerDeBaseProductos();?>
 		<CENTER>
 		<H1>Cree su menu</H1>
 			<FORM id="main">
@@ -50,10 +50,11 @@
 					<OPTION VALUE="viernes">Viernes</OPTION>
 					<OPTION VALUE="sabado">Sabado</OPTION>
 					<OPTION VALUE="domingo">Domingo</OPTION>
-				</SELECT><br>	
-				 <input type="button" onclick="addSelectBox(<?php echo json_encode($resultSet); ?>)" name="producto" value="Agrega Producto" />
+				</SELECT><br><br> Seleccione los productos: &nbsp;
+				<span id="insertHere"></span>
+				 <input type="button" onclick="addSelectBox();" name="producto" value="Agrega Producto" />
 				<br>
-				
+				<br>
 			</FORM>
 			<FORM>
 				<Input type=submit value="Crear" name="Crear">	
