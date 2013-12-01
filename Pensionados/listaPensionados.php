@@ -5,7 +5,7 @@
 	<BODY>
 		<?php
 		function llenarTablaActivos(){
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM pensionados where estado='1'", $db);
 			while($row=mysql_fetch_row($res)){
@@ -23,7 +23,7 @@
 		}
 
 		function llenarTablaInactivos(){
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM pensionados where estado='0'", $db);
 			while($row=mysql_fetch_row($res)){
@@ -51,7 +51,7 @@
 		<?php
 			function llenarTablaBusqueda(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM pensionados WHERE nombre like '%$buscar%' and estado='1'", $db);
 			while($row=mysql_fetch_row($res)){
@@ -70,7 +70,7 @@
 		
 		function llenarTablaBusquedaInactivos(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "");
+			$db = mysql_connect("localhost", "root", "root");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM pensionados WHERE nombre like '%$buscar%' and estado='0'", $db);
 			while($row=mysql_fetch_row($res)){

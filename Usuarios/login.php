@@ -3,7 +3,7 @@
 	<title>Autentificacion</title>
 </head>
 <body>
-<h1>Iniciar Sesion</h1>
+<CENTER><h1>Iniciar Sesion</h1>
 <form action="controlInicioSesion.php" method="POST">
 <table align="center" width="225" cellspacing="2" cellpadding="2" border="0">
 <tr>
@@ -11,7 +11,7 @@
 	<?php if (isset($_GET["errorusuario"])=="si"){?>
 		bgcolor=red><span style="color:ffffff"><b>Datos incorrectos</b></span>
 	<?php }else{?>
-		bgcolor=#cccccc>Introduce tu clave de acceso
+		bgcolor=#cccccc>Introduce tus datos de acceso
 	<?php } ?></td>
 </tr>
 <tr>
@@ -28,7 +28,7 @@
 </table>
 </form>
 <br>
-<br>
+<br></CENTER>
 </body>
 </html>
 

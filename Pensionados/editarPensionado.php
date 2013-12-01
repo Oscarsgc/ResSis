@@ -5,7 +5,7 @@
 <BODY>
 	<?php 
 		$id=$_GET["aux"];
-		$db = mysql_connect("localhost", "root", "");
+		$db = mysql_connect("localhost", "root", "root");
 		mysql_select_db("restaurant",$db);
 		$res=mysql_query("SELECT * FROM pensionados Where cod_pensionado='$id'", $db);
 		$data = mysql_fetch_row($res);

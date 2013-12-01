@@ -6,7 +6,7 @@
 	$telefono = $_POST["telefono"];
 	$estado = $_POST["estado"];
 
-	$db = mysql_connect("localhost", "root", "");
+	$db = mysql_connect("localhost", "root", "root");
 	mysql_select_db("restaurant",$db);
 	mysql_query("UPDATE pensionados SET ci='$ci', nombre='$nombre', direccion='$direccion', telefono='$telefono', estado='$estado' WHERE cod_pensionado='$codigo'", $db);
 	echo "Pensionado Modificado";
