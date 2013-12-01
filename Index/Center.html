@@ -1,2 +1,26 @@
-<HTML>
-</HTML>
+<html>
+  <head>
+    <script type="text/javascript">
+    var c=0;
+        function addSelectBox ()
+        {
+
+            var parentDiv = document.getElementById ("main");
+            var selectElement = document.createElement ("select");
+            selectElement.setAttribute("name", "SelectBoxExtra"+c);
+            c=c+1;
+            for (var i=0;i < 5;i++)
+            {
+                var option = new Option ("Text " + i, "Value" + i);
+                selectElement.options[selectElement.options.length] = option;
+            }
+            parentDiv.appendChild (selectElement);
+        }
+    </script>
+  </head>
+  <body>
+    <div id="main">
+        <input type="button" onclick="addSelectBox ()" name="clickme" value="Add Select Box" />
+    </div>
+  </body>
+</html>
