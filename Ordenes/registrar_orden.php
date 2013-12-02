@@ -56,7 +56,7 @@
 			element2.setAttribute("maxlength", "2");
             for (var i=0;i < arreglo.length;i++)
             {
-                var option = new Option (arreglo[i][0], arreglo[i][1]);
+                var option = new Option (arreglo[i][1], arreglo[i][0]);
                 element.options[element.options.length] = option;
             }
             parentDiv.appendChild(element);
@@ -68,23 +68,23 @@
         }
 
         function contador(){
-        	var parentDiv = document.getElementById ("main1");
+        	var parentDiv = document.getElementById ("registro");
         	var element = document.createElement("input");
         	element.setAttribute("type", "hidden");
-        	element.setAttribute("value", c1);
         	element.setAttribute("name","cantSel1");
+        	element.setAttribute("value", c1);
         	parentDiv.appendChild(element);
-        	var parentDiv = document.getElementById ("main2");
-        	var element = document.createElement("input");
+        	parentDiv = document.getElementById ("registro");
+        	element = document.createElement("input");
         	element.setAttribute("type", "hidden");
-        	element.setAttribute("value", c2);
         	element.setAttribute("name","cantSel2");
+        	element.setAttribute("value", c2);
         	parentDiv.appendChild(element);
-        	var parentDiv = document.getElementById ("main3");
-        	var element = document.createElement("input");
+        	parentDiv = document.getElementById ("registro");
+        	element = document.createElement("input");
         	element.setAttribute("type", "hidden");
-        	element.setAttribute("value", c3);
         	element.setAttribute("name","cantSel3");
+        	element.setAttribute("value", c3);
         	parentDiv.appendChild(element);
         }
 
@@ -94,7 +94,9 @@
 	<BODY>
 		<CENTER>
 		<H1>Registrar Orden</H1>
-		<form id="registro" name="registro" action="guardar_orden.php" method="get">
+		<form id="registro" name="registro" action="guardar_orden.php" method="post">
+			Numero de Mesa: <input type="text" name="mesa" /><br>
+			Nombre de Orden: <input type="text" name="nombre"/><br>
 			Seleccione los productos y ponga la cantidad: <br>
 			<div id="main1">
 			<h3>Platos:</h3> 

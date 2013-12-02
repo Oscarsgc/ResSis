@@ -1,19 +1,17 @@
 <HTML>
 	<HEAD>
-		<TITLE>Lista de ordens</TITLE>
+		<TITLE>Lista de ordenes</TITLE>
 		<?php require("../db/conexion_db.php");
 
 		function mostrar_datos($res) {
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
-				$estado=$row[5];
+				$estado=$row[4];
 				echo "<TR>";
 				echo "<TD>".$row[1]."</TD>";
 				echo "<TD>".$row[2]."</TD>";
 				echo "<TD>".date_create($row[3])->format('d-m-Y H:i')."</TD>";
 				echo "<TD>"."<a href=\"ver_orden.php?aux=$id\">Ver</a>"."</TD>";
-				if($row[4])
-					echo "<TD>"."<a href=\"editar_orden.php?aux=$id\">Modificar</a>"."</TD>";
 				if ($row[4])
 					echo "<TD>"."<a href=\"cancelar_orden.php?aux=$id&estado=$estado\">Cancelar</a>"."</TD>";
 				else
@@ -54,7 +52,7 @@
 	</HEAD>
 	<BODY>
 
-		<CENTER><H1>ordens de Mesas</H1>
+		<CENTER><H1>Lista de ordenes</H1>
 
 		<FORM NAME="Datos1" Method="get" Action="index.php">
 			Nombre de orden: <INPUT TYPE=Text NAME="nombre"><BR>
@@ -71,7 +69,6 @@
 					<TD>Numero Mesa</TD>
 					<TD>Nombre de orden</TD>
 					<TD>Fecha</TD>
-					<TD></TD>
 					<TD></TD>
 					<TD></TD>
 				</TR>
