@@ -114,26 +114,7 @@
 				?>
 			</TABLE>
 			<BR><BR>
-			<H1>Lista de Menus Inactivos</H1><br>
-
-				<TABLE BORDER=3>
-				<TR>
-					<TD>Codigo</TD>
-					<TD>Ci</TD>
-					<TD>Nombre</TD>
-					<TD>Direccion</TD>
-					<TD>Telefono</TD>
-					<TD></TD>
-				</TR>
-				<?php
-				if(isset($_POST["Buscar"]))
-				{
-					llenarTablaBusquedaInactivos();
-				}else{ 
-					llenarTablaInactivos(); 
-				}
-				?>
-				</TABLE>
+			
 			<br>
 			<FORM Action="registrarPensionado.php">
 				<INPUT TYPE=Submit NAME="Insertar" VALUE="Insertar">
