@@ -15,8 +15,6 @@ date_default_timezone_set('GMT-4');
 	//echo date('Y-m-d H:i:s', $fecha);
 	$fecha = date(DATE_RFC2822);
 
-	
-	
 
 	$res = mysql_query("INSERT INTO menu_dia VALUES ('NULL','$dia', '$fecha', 'NULL', '$estado')");
 	
