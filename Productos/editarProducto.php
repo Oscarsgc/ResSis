@@ -5,6 +5,7 @@
 	<TITLE>Editar Producto</TITLE>
 	<link href="../CSS/templatemo_style.css" rel="stylesheet" type="text/css" />
 
+
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
 </HEAD>
 <BODY>
