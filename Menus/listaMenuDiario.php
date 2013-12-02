@@ -32,8 +32,8 @@
       				<li><a href="../index.html" >Inicio</a></li>
       				<li><a href="listaMenuDiario.php" class="current">Menus</a></li>
       				<li><a href="#">Promociones</a></li>
-      				<li><a href="ReservaMesas/index.php">Reservas</a></li>
-      				<li><a href="Usuarios/login.php">Iniciar Sesion</a></li>
+      				<li><a href="../ReservaMesas/index.php">Reservas</a></li>
+      				<li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Lista Menus Activos <br></div>
