@@ -1,6 +1,6 @@
 <html>
  <head>
-  <?php include ("seguridad.php");?>
+  <?php require ("../seguridad.php");?>
   <title> Reservar Mesa </title>
  </head>
  <body>
@@ -8,7 +8,7 @@
    <form action="guardar_reserva.php" method="post">
 	Numero de Mesa:
 	<input id="mesa" name="mesa" type="text"/><br><br>
-	Nombre:
+	Nombre de Reserva:
 	<input id="nombre" name="nombre" type="text"/><br><br>
 	Fecha:
 	<input id="fecha" name="fecha" type="date"/><br><br>
