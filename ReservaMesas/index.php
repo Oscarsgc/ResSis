@@ -13,7 +13,8 @@
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".date_create($row[3])->format('d-m-Y')."</TD>";
 				echo "<TD>".$row[4]."</TD>";
-				echo "<TD>"."<a href=\"editar_reserva.php?aux=$id\">Modificar</a>"."</TD>";
+				if($row[5])
+					echo "<TD>"."<a href=\"editar_reserva.php?aux=$id\">Modificar</a>"."</TD>";
 				if ($row[5] && !$row[6])
 					echo "<TD>"."<a href=\"cancelar_reserva.php?aux=$id&estado=$estado\">Cancelar</a>"."</TD>";
 				else
