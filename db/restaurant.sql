@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 02-12-2013 a las 01:50:47
+-- Tiempo de generación: 02-12-2013 a las 15:39:28
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.16
 
@@ -90,6 +90,8 @@ CREATE TABLE IF NOT EXISTS `menu_dia` (
 CREATE TABLE IF NOT EXISTS `orden` (
   `cod_orden` bigint(20) NOT NULL AUTO_INCREMENT,
   `num_mesa` int(2) NOT NULL,
+  `nombre_cliente` varchar(40) COLLATE latin1_spanish_ci NOT NULL,
+  `fecha` datetime NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_orden`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;

@@ -5,7 +5,7 @@
 	<BODY>
 		<?php
 		function llenarTablaActivos(){
-			$db = mysql_connect("localhost", "root", "root");
+			$db = mysql_connect("localhost", "root", "");
 			mysql_select_db("restaurant",$db);
 			$res=mysql_query("SELECT * FROM producto where estado='1'", $db);
 			while($row=mysql_fetch_row($res)){

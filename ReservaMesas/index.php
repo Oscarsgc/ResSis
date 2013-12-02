@@ -91,7 +91,6 @@
 					<TD>Fecha</TD>
 					<TD>Hora</TD>
 					<TD></TD>
-					<TD></TD>
 				</TR>
 				<?php
 					llenarTablas(1,1);
@@ -106,7 +105,6 @@
 					<TD>Nombre de Reserva</TD>
 					<TD>Fecha</TD>
 					<TD>Hora</TD>
-					<TD></TD>
 					<TD></TD>
 				</TR>
 				<?php
