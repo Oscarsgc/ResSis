@@ -133,6 +133,7 @@
 				    <li><a href="../principalMarketing.php">Promociones</a></li>
 				    <li><a href="../ReservaMesas/index.php">Reservas</a></li>
 				    <li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+				    <li><a href="../Usuarios/perfil.php">Perfil</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Registrar Pedido<br></div>
