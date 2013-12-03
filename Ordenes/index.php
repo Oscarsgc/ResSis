@@ -66,11 +66,11 @@
 			<H3>Lista de Ordenes</H3><br>
 			<TABLE BORDER=3>
 				<TR>
-					<TD>Numero Mesa</TD>
-					<TD>Nombre de orden</TD>
-					<TD>Fecha</TD>
-					<TD></TD>
-					<TD></TD>
+					<TH>Numero Mesa</TH>
+					<TH>Nombre de orden</TH>
+					<TH>Fecha</TH>
+					<TH></TH>
+					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(1);
@@ -81,11 +81,11 @@
 
 			<TABLE BORDER=3>
 				<TR>
-					<TD>Numero Mesa</TD>
-					<TD>Nombre de orden</TD>
-					<TD>Fecha</TD>
-					<TD></TD>
-					<TD></TD>
+					<TH>Numero Mesa</TH>
+					<TH>Nombre de orden</TH>
+					<TH>Fecha</TH>
+					<TH></TH>
+					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(0);

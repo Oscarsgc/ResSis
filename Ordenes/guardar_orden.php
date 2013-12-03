@@ -11,9 +11,6 @@
 
 	$nombre=$_POST["nombre"];
 	$mesa=$_POST["mesa"];
-	echo $mesa."<br>";
-	echo $nombre."<br>";
-	echo $fecha."<br>";
 	$id="";
 
 	$res = mysql_query("INSERT INTO orden VALUES ('NULL','$mesa', '$nombre', '$fecha', '1')");
@@ -23,32 +20,25 @@
 	while($row=mysql_fetch_row($cod)){
 		$id=$row[0];
 	}
-	echo $id."<br>";
 
 	for ($i=0; $i < $cant_platos; $i++) { 
 		$value=$_POST["plato".$i];
 		$cant=$_POST["cant_plato".$i];
-		echo $value."<br>";
-		echo $cant."<br>";
 		$res=mysql_query("INSERT INTO orden_producto VALUES ('NULL','$id', '$value', '$cant')");
 	}
 
 	for ($i=0; $i < $cant_platos; $i++) { 
 		$value=$_POST["bebida".$i];
 		$cant=$_POST["cant_bebida".$i];
-		echo $value."<br>";
-		echo $cant."<br>";
 		$res=mysql_query("INSERT INTO orden_producto VALUES ('NULL','$id', '$value', '$cant')");
 	}
 
 	for ($i=0; $i < $cant_platos; $i++) { 
 		$value=$_POST["guarnicion".$i];
 		$cant=$_POST["cant_guarnicion".$i];
-		echo $value."<br>";
-		echo $cant."<br>";
 		$res=mysql_query("INSERT INTO orden_producto VALUES ('NULL','$id', '$value', '$cant')");
 	}
 
-	//header ("Location: index.php");
+	header ("Location: ver_orden.php?aux=$id");
 	
 ?>

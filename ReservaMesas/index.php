@@ -92,12 +92,12 @@
 			<H3>Lista de Reservas Actuales</H3><br>
 			<TABLE BORDER=3>
 				<TR>
-					<TD>Numero Mesa</TD>
-					<TD>Nombre de Reserva</TD>
-					<TD>Fecha</TD>
-					<TD>Hora</TD>
-					<TD></TD>
-					<TD></TD>
+					<TH>Numero Mesa</TH>
+					<TH>Nombre de Reserva</TH>
+					<TH>Fecha</TH>
+					<TH>Hora</TH>
+					<TH></TH>
+					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(1,0);
@@ -108,11 +108,11 @@
 
 			<TABLE BORDER=3>
 				<TR>
-					<TD>Numero Mesa</TD>
-					<TD>Nombre de Reserva</TD>
-					<TD>Fecha</TD>
-					<TD>Hora</TD>
-					<TD></TD>
+					<TH>Numero Mesa</TH>
+					<TH>Nombre de Reserva</TH>
+					<TH>Fecha</TH>
+					<TH>Hora</TH>
+					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(1,1);
@@ -124,11 +124,11 @@
 
 			<TABLE BORDER=3>
 				<TR>
-					<TD>Numero Mesa</TD>
-					<TD>Nombre de Reserva</TD>
-					<TD>Fecha</TD>
-					<TD>Hora</TD>
-					<TD></TD>
+					<TH>Numero Mesa</TH>
+					<TH>Nombre de Reserva</TH>
+					<TH>Fecha</TH>
+					<TH>Hora</TH>
+					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(0,0);
