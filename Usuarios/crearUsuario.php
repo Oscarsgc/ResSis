@@ -31,8 +31,17 @@
 			Ci: <INPUT TYPE=Text NAME="ci" VALUE=""><BR>
 			Nombre: <INPUT TYPE=Text NAME="nombre" VALUE=""><BR>
 			Correo: <INPUT TYPE=Text NAME="correo" VALUE=""><BR>
-			<INPUT TYPE=Hidden NAME="rol" VALUE="0">
-			<INPUT TYPE=Hidden NAME="estado" VALUE="0">
+
+			<?php if ($_SESSION["autentificado"] != "si" && $_SESSION["rol"]=="1") {
+					echo "<SELECT NAME='rol' SIZE=1>
+							<OPTION VALUE='1'>Administrador</OPTION>
+							<OPTION VALUE='2'>Funcionario</OPTION>
+							<OPTION VALUE='3'>Cliente</OPTION>
+						</SELECT>	<BR>";
+				} else {
+					echo "<INPUT TYPE=Hidden NAME='rol' VALUE='3'>";
+				}
+			?>
 			<BR>	
 			<INPUT TYPE=Submit NAME="Guardar" VALUE="Guardar"><DD></DD>
 		</FORM>

@@ -1,3 +1,9 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -31,12 +37,12 @@
 
 		function obtener_datos($mesa, $nombre, $estado, $terminado){
 			if (!is_null($mesa)) {
-				$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado' and num_mesa = '$mesa'");
+				$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado' and num_mesa = '$mesa' ORDER BY cod_reserva_mesa DESC");
 			} else {
 				if (!is_null($nombre)){
-					$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado' and nombre_cliente like '%$nombre%'");
+					$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado' and nombre_cliente like '%$nombre%' ORDER BY cod_reserva_mesa DESC");
 				} else {
-					$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado'");
+					$res=mysql_query("SELECT * FROM reserva_mesa where estado='$estado' and terminada='$terminado' ORDER BY cod_reserva_mesa DESC");
 				}
 			}
 			mostrar_datos($res);
@@ -89,7 +95,7 @@
 			Numero de mesa: <INPUT TYPE=Text NAME="mesa"><BR>
 			<INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
 		</FORM>
-			<H3>Lista de Reservas Actuales</H3><br>
+			<div id="templatemo_topsection">Lista de Reservas Actuales<br></div>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Numero Mesa</TH>

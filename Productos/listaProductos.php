@@ -1,3 +1,10 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
+<?php require("../db/conexion_db.php"); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -11,9 +18,7 @@
 	<BODY>
 		<?php
 		function llenarTablaActivos(){
-			$db = mysql_connect("localhost", "root", "");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM producto where estado='1'", $db);
+			$res=mysql_query("SELECT * FROM producto where estado='1' ORDER BY cod_producto DESC");
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
 				echo "<TR>";
@@ -36,9 +41,7 @@
 		}
 
 		function llenarTablaInactivos(){
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM producto where estado='0'", $db);
+			$res=mysql_query("SELECT * FROM producto where estado='0' ORDER BY cod_producto DESC");
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
 				echo "<TR>";
@@ -87,9 +90,7 @@
 		<?php
 			function llenarTablaBusqueda(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM producto WHERE nombre like '%$buscar%' and estado='1'", $db);
+			$res=mysql_query("SELECT * FROM producto WHERE nombre like '%$buscar%' and estado='1' ORDER BY cod_producto DESC");
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
 				echo "<TR>";
@@ -113,9 +114,7 @@
 		
 		function llenarTablaBusquedaInactivos(){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM producto WHERE nombre like '%$buscar%' and estado='0'", $db);
+			$res=mysql_query("SELECT * FROM producto WHERE nombre like '%$buscar%' and estado='0' ORDER BY cod_producto DESC");
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
 				echo "<TR>";

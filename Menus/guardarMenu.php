@@ -1,4 +1,9 @@
-
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <?php require("../conexion_db.php"); ?>
 <?php
 date_default_timezone_set('GMT-4');

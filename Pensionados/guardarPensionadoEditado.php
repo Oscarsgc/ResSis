@@ -1,3 +1,9 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <?php
 	$codigo = $_POST["codigo"];
 	$ci = $_POST["ci"];

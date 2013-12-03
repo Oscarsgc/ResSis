@@ -1,21 +1,27 @@
-
+<?php include ("../seguridad.php");?>
 <?php require("../db/conexion_db.php"); ?>
 <?php
 	$now = new DateTime();
 	date_timezone_set($now, timezone_open('America/La_Paz'));
 	$fecha = $now->format('Y-m-d H:i:s');
-
+	echo $fecha."<br>";
 	$cant_platos = $_POST["cantSel1"];
 	$cant_bebidas = $_POST["cantSel2"];
 	$cant_guarniciones = $_POST["cantSel3"];
 
 	$nombre=$_POST["nombre"];
+	echo $nombre."<br>";
 	$nit=$_POST["nit"];
+	echo $nit."<br>";
 	$dir=$_POST["dir"];
+	echo $dir."<br>";
 	$telf=$_POST["telf"];
+	echo $telf."<br>";
 	$id="";
+	$usuario = $_SESSION["usuario"];
 
-	$res = mysql_query("INSERT INTO pedido VALUES ('NULL', '$nombre', '$nit', '$dir', '$telf', '$fecha', '1')");
+
+	$res = mysql_query("INSERT INTO pedido VALUES ('NULL', '$nombre', '$nit', '$dir', '$telf', '$fecha', '1', '0', '$usuario')");
 	
 	$cod= mysql_query("SELECT cod_pedido FROM pedido WHERE fecha='$fecha'");
 

@@ -1,9 +1,4 @@
 <?php include ("../seguridad.php");?>
-<?php 
-if ($_SESSION["rol"] == '3') {
-	header("Location: mis_pedidos.php");
-}	
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -18,7 +13,6 @@ if ($_SESSION["rol"] == '3') {
 			while($row=mysql_fetch_row($res)){
 				$id=$row[0];
 				$estado=$row[6];
-				$entregado=$row[7];
 				echo "<TR>";
 				echo "<TD>".$row[2]."</TD>";
 				echo "<TD>".$row[1]."</TD>";
@@ -26,29 +20,25 @@ if ($_SESSION["rol"] == '3') {
 				echo "<TD>".$row[4]."</TD>";
 				echo "<TD>".date_create($row[5])->format('d-m-Y H:i')."</TD>";
 				echo "<TD>"."<a href=\"ver_pedido.php?aux=$id\">Ver</a>"."</TD>";
-				if ($row[6]){
-					if (!$row[7]){
-						echo "<TD>"."<a href=\"entregar_pedido.php?aux=$id&entregado=$entregado\">Entregado</a>"."</TD>";
+				if (!$row[7]){
+					if($row[6])
 						echo "<TD>"."<a href=\"cancelar_pedido.php?aux=$id&estado=$estado\">Cancelar</a>"."</TD>";
-					}
-					else {
-						echo "<TD>"."<a href=\"entregar_pedido.php?aux=$id&entregado=$entregado\">Restablecer</a>"."</TD>";
-					}
-				} else {
-					echo "<TD>"."<a href=\"cancelar_pedido.php?aux=$id&estado=$estado\">Restablecer</a>"."</TD>";
+					else
+						echo "<TD>"."<a href=\"cancelar_pedido.php?aux=$id&estado=$estado\">Restablecer</a>"."</TD>";
 				}
 				echo "</TR>";
 			}
 		}
 
 		function obtener_datos($nit, $nombre, $estado, $entregado){
+			$login = $_SESSION["usuario"];
 			if (!is_null($nit)) {
-				$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' and nit = '$nit' ORDER BY cod_pedido DESC");
+				$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' and usuario='$login' and nit = '$nit' ORDER BY cod_pedido DESC");
 			} else {
 				if (!is_null($nombre)){
-					$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' and nombre like '%$nombre%' ORDER BY cod_pedido DESC");
+					$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' and usuario='$login' and nombre like '%$nombre%' ORDER BY cod_pedido DESC");
 				} else {
-					$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' ORDER BY cod_pedido DESC");
+					$res=mysql_query("SELECT * FROM pedido where estado='$estado' and entregado='$entregado' and usuario='$login' ORDER BY cod_pedido DESC");
 				}
 			}
 			mostrar_datos($res);
@@ -90,6 +80,8 @@ if ($_SESSION["rol"] == '3') {
 
 		<CENTER>
 
+		<h3> Usuario: <?php $_SESSION["usuario"]; ?> </h3>
+
 		<FORM NAME="Datos1" Method="get" Action="index.php">
 			Nombre: <INPUT TYPE=Text NAME="nombre"><BR>
 			<INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
@@ -112,7 +104,6 @@ if ($_SESSION["rol"] == '3') {
 					<TH>Fecha</TH>
 					<TH></TH>
 					<TH></TH>
-					<TH></TH>
 				</TR>
 				<?php
 					llenarTablas(1,0);
@@ -122,7 +113,6 @@ if ($_SESSION["rol"] == '3') {
 			</div>
 			<div id="templatemo_topsection">Lista de Pedidos Entregados<br></div>
 			<div id="templatemo_content_section">
-			<CENTER>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Nit</TH>
@@ -130,7 +120,6 @@ if ($_SESSION["rol"] == '3') {
 					<TH>Direccion</TH>
 					<TH>Telefono</TH>
 					<TH>Fecha</TH>
-					<TH></TH>
 					<TH></TH>
 				</TR>
 				<?php
@@ -140,7 +129,6 @@ if ($_SESSION["rol"] == '3') {
 			<br><br>
 			<div id="templatemo_topsection">Lista de Pedidos Cancelados<br></div>
 			<div id="templatemo_content_section">
-			<CENTER>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Nit</TH>

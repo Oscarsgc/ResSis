@@ -1,3 +1,9 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -80,7 +86,7 @@
 			<form action="cancelar_orden.php" name="cancel" method="get">
 				<input type="hidden" name="aux" value="<?php echo $cod; ?>">
 				<input type="hidden" name="estado" value="<?php echo $estado; ?>">
-				<input type="submit" name="cancelar" value="<?php if ($estado==1) echo 'Cancelar'; else echo 'Reestablecer';?>">
+				<input type="submit" name="cancelar" value="<?php if ($estado==1) echo 'Cancelar'; else echo 'Restablecer';?>">
 			</form>
 			<a href="index.php">Ver Lista</a><br>
 			<a href="../salir.php">Salir</a>

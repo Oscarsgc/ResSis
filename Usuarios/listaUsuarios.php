@@ -1,3 +1,10 @@
+<?php include ("../seguridad.php");?>
+<?php require("../db/conexion_db.php"); ?>
+<?php 
+if ($_SESSION["rol"] != '1') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -9,18 +16,23 @@
 	</HEAD>
 	<BODY>
 		<?php
-		function llenarTabla(){
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM usuarios", $db);
+		function llenarTabla($rol){
+			$res=mysql_query("SELECT * FROM usuarios WHERE rol='$rol'");
 
 			while($row=mysql_fetch_row($res)){
+				$estado=$row[8];
+				$login=$row[0];
 				echo "<TR>";
 				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
-				echo "<TD>".$row[4]."</TD>";	
-				echo "<TD>".$row[5]."</TD>";	
+				echo "<TD>".$row[4]."</TD>";
+				echo "<TD>"."<a href=\"ver_perfil.php?aux=$id\">Ver Usuario</a>"."</TD>";
+				if ($estado=='1') {
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Eliminar</a>"."</TD>";
+				} else {
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Reincorporar</a>"."</TD>";
+				}
 				echo "</TR>";
 				
 			}
@@ -49,38 +61,85 @@
 		</FORM>
 
 		<?php
-			function llenarTablaBusqueda(){
+			function llenarTablaBusqueda($rol){
 			$buscar = $_POST["buscar"];
-			$db = mysql_connect("localhost", "root", "root");
-			mysql_select_db("restaurant",$db);
-			$res=mysql_query("SELECT * FROM usuarios WHERE Nombre like '%$buscar%'", $db);
+			$res=mysql_query("SELECT * FROM usuarios WHERE rol='$rol' and nombre like '%$buscar%'");
 			while($row=mysql_fetch_row($res)){
+				$estado=$row[8];
+				$login=$row[0];
 				echo "<TR>";
 				echo "<TD>".$row[0]."</TD>";	
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
-				echo "<TD>".$row[4]."</TD>";	
-				echo "<TD>".$row[5]."</TD>";	
+				echo "<TD>".$row[4]."</TD>";
+				echo "<TD>"."<a href=\"ver_perfil.php?aux=$id\">Ver Usuario</a>"."</TD>";
+				if ($estado=='1') {
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Eliminar</a>"."</TD>";
+				} else {
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Reincorporar</a>"."</TD>";
+				}
 				echo "</TR>";
 				
 			}
 		}
 		
 		?>
+		<div id="templatemo_topsection">Administradores<br></div>
 			<TABLE BORDER=3>
 				<TR>
 					<TD>Login</TD>
 					<TD>Ci</TD>
 					<TD>Nombre</TD>
 					<TD>Correo</TD>
-					<TD>Rol</TD>
+					<TD></TD>
+					<TD></TD>
 				</TR>
 				<?php
 				if(isset($_POST["Buscar"]))
 				{
-					llenarTablaBusqueda();
+					llenarTablaBusqueda(1);
 				}else{ 
-					llenarTabla(); 
+					llenarTabla(1); 
+				}
+				?>
+			</TABLE>
+			<BR><BR>
+			<div id="templatemo_topsection">Funcionarios<br></div>
+			<TABLE BORDER=3>
+				<TR>
+					<TD>Login</TD>
+					<TD>Ci</TD>
+					<TD>Nombre</TD>
+					<TD>Correo</TD>
+					<TD></TD>
+					<TD></TD>
+				</TR>
+				<?php
+				if(isset($_POST["Buscar"]))
+				{
+					llenarTablaBusqueda(2);
+				}else{ 
+					llenarTabla(2); 
+				}
+				?>
+			</TABLE>
+			<BR><BR>
+			<div id="templatemo_topsection">Clientes<br></div>
+			<TABLE BORDER=3>
+				<TR>
+					<TD>Login</TD>
+					<TD>Ci</TD>
+					<TD>Nombre</TD>
+					<TD>Correo</TD>
+					<TD></TD>
+					<TD></TD>
+				</TR>
+				<?php
+				if(isset($_POST["Buscar"]))
+				{
+					llenarTablaBusqueda(3);
+				}else{ 
+					llenarTabla(3); 
 				}
 				?>
 			</TABLE>

@@ -1,3 +1,9 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <?php
 	require("../db/conexion_db.php");
 	$id=$_GET["aux"];
