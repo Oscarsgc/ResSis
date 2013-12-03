@@ -1,6 +1,11 @@
-<HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
-		<TITLE>Lista de pedidos</TITLE>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+			<TITLE>Lista de pedidos</TITLE>
+			<link href="../CSS/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="../CSS/reflection.js"></script>
 		<?php require("../db/conexion_db.php");
 
 		function mostrar_datos($res) {
@@ -53,8 +58,23 @@
 		?>
 	</HEAD>
 	<BODY>
+<div id="templatemo_container">
+			<div class="templatemo_topmenu">
+				<ul>
+      				<li><a href="../index.html" >Inicio</a></li>
+      				<li><a href="listaMenuDiario.php" class="current">Menus</a></li>
+      				<li><a href="#">Promociones</a></li>
+      				<li><a href="../ReservaMesas/index.php">Reservas</a></li>
+      				<li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+      			</ul>
+			 </div>
+			
+			<BR>
+		
+	
+		<div id="templatemo_content_section">
 
-		<CENTER><H1>Lista de pedidos</H1>
+		<CENTER>
 
 		<FORM NAME="Datos1" Method="get" Action="index.php">
 			Nombre: <INPUT TYPE=Text NAME="nombre"><BR>
@@ -65,7 +85,10 @@
 			Nit: <INPUT TYPE=Text NAME="nit"><BR>
 			<INPUT TYPE=Submit NAME="Buscar" VALUE="Buscar"><DD></DD>
 		</FORM>
-			<H3>Lista de pedidos</H3><br>
+			</div>
+			<div id="templatemo_topsection">Lista de Pedidos<br></div>
+			<div id="templatemo_content_section">
+			<CENTER>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Nit</TH>
@@ -80,9 +103,12 @@
 					llenarTablas(1);
 				?>
 			</TABLE>
+			</CENTER>
 			<BR><BR>
-			<H3>Lista de pedidos Canceladas</H3><br>
-
+			</div>
+			<div id="templatemo_topsection">Lista de Pedidos Cancelados<br></div>
+			<div id="templatemo_content_section">
+<CENTER>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Nit</TH>
@@ -103,5 +129,9 @@
 			</form>
 			<a href="../salir.php">Salir</a>
 		</CENTER>
+		</div>
+		<div id="templatemo_footer">Copyright © ResSis</div>
+			<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js'></script>
+<script type='text/javascript' src='../CSS/js/logging.js'></script>
 	</BODY>
 </HTML>
