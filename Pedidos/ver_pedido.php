@@ -1,20 +1,22 @@
 <HTML>
 	<HEAD>
-		<TITLE>Ver Orden </TITLE>
+		<TITLE>Ver pedido </TITLE>
 		<?php require("../db/conexion_db.php");
 			$cod=$_GET["aux"];
-			$res= mysql_query("SELECT num_mesa, nombre_cliente, fecha, estado FROM orden WHERE cod_orden='$cod'");
+			$res= mysql_query("SELECT nit, nombre, direccion, telefono, fecha, estado FROM pedido WHERE cod_pedido='$cod'");
 			$row=mysql_fetch_row($res);
-			$mesa = $row[0];
+			$nit = $row[0];
 			$nombre = $row[1];
-			$fecha = date_create($row[2])->format("d-m-Y H:i");
-			$estado = $row[3];
+			$dir = $row[2];
+			$telf = $row[3];
+			$fecha = date_create($row[4])->format("d-m-Y H:i");
+			$estado = $row[5];
 			$total = 0;
 			
 			function obtener_productos(){
 				$cod=$_GET["aux"];
 				$total = 0;
-				$res=mysql_query("SELECT P.cod_producto, P.nombre, P.tipo, P.precio, OP.cantidad FROM orden_producto OP, producto P WHERE OP.cod_orden='$cod' AND P.cod_producto=OP.cod_producto");
+				$res=mysql_query("SELECT P.cod_producto, P.nombre, P.tipo, P.precio, OP.cantidad FROM pedido_producto OP, producto P WHERE OP.cod_pedido='$cod' AND P.cod_producto=OP.cod_producto");
 				while($row=mysql_fetch_row($res)){
 					echo "<TR>";
 					echo "<TD>".$row[0]."</TD>";
@@ -39,9 +41,11 @@
 	</HEAD>
 	<BODY>
 		<CENTER>
-		<H1> Orden Numero: <?php echo $cod; ?></H1>
-			<b><FONT SIZE=4> Numero de Mesa: </FONT></b>&nbsp; <?php echo $mesa; ?><br><br>
-			<b><FONT SIZE=4> Nombre de Orden: </FONT></b>&nbsp; <?php echo $nombre; ?><br><br>
+		<H1> pedido Numero: <?php echo $cod; ?></H1>
+			<b><FONT SIZE=4> Nit: </FONT></b>&nbsp; <?php echo $nit; ?><br><br>
+			<b><FONT SIZE=4> Nombre: </FONT></b>&nbsp; <?php echo $nombre; ?><br><br>
+			<b><FONT SIZE=4> Direccion: </FONT></b>&nbsp; <?php echo $dir; ?><br><br>
+			<b><FONT SIZE=4> Telefono: </FONT></b>&nbsp; <?php echo $telf; ?><br><br>
 			<b><FONT SIZE=4> Fecha: </FONT></b>&nbsp; <?php echo $fecha; ?><br><br>
 			<TABLE BORDER=3>
 				<TR>
@@ -57,7 +61,7 @@
 			</TABLE>
 			<BR>
 			<b><FONT SIZE=4> Costo Total: </FONT></b>&nbsp; <?php echo $total; ?><br><br>
-			<form action="cancelar_orden.php" name="cancel" method="get">
+			<form action="cancelar_pedido.php" name="cancel" method="get">
 				<input type="hidden" name="aux" value="<?php echo $cod; ?>">
 				<input type="hidden" name="estado" value="<?php echo $estado; ?>">
 				<input type="submit" name="cancelar" value="<?php if ($estado==1) echo 'Cancelar'; else echo 'Reestablecer';?>">
