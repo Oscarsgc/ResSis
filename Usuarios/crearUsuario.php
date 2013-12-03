@@ -6,6 +6,29 @@
 		<link href="../CSS/templatemo_style.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
+		<script type="text/javascript">
+	function soloEnteros(objeto, e){
+
+             var keynum
+             var keychar
+             var numcheck
+             if(window.event){ 
+                keynum = e.keyCode
+				}
+           else if(e.which){ 
+            keynum = e.which
+          }
+             if((keynum>=35 && keynum<=37) ||keynum==8||keynum==9||keynum==46||keynum==39) {
+            return true;
+
+            }
+  			if((keynum>=95&&keynum<=105)||(keynum>=48&&keynum<=57)){
+           	 return true;
+          	}else {
+            	return false;
+           }
+    	}
+</script>
 	</HEAD>
 	<BODY>
 	<div id="templatemo_container">
@@ -13,10 +36,14 @@
 			<div class="templatemo_topmenu">
 				<ul>
       				<li><a href="../index.html" >Inicio</a></li>
-      				<li><a href="listaMenuDiario.php" class="current">Menus</a></li>
-      				<li><a href="#">Promociones</a></li>
-      				<li><a href="../ReservaMesas/index.php">Reservas</a></li>
-      				<li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+      				<li><a href="../Pedidos/index.php" >Pedidos</a></li>
+      				<li><a href="../Menus/listaMenuDiario.php" >Menus</a></li>
+				    <li><a href="../Ordenes/index.php">Ordenes</a></li>
+				    <li><a href="../Pensionados/listaPensionados.php">Pensionados</a></li>
+				    <li><a href="../Productos/listaProductos.php">Productos</a></li>
+				    <li><a href="../principalMarketing.php">Promociones</a></li>
+				    <li><a href="../Reservas/index.php" >Reservas</a></li>
+				    <li><a href="listaUsuarios.php" class="current">Iniciar Sesion</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Crear Usuarios<br></div>
@@ -28,7 +55,7 @@
 		<FORM NAME="Datos" Action="controlCreacionUsuarios.php" Method="POST">
 			Login: <INPUT TYPE=Text NAME="usuario" VALUE=""><BR>
 			Password:<INPUT TYPE=Password NAME="contrasena" VALUE=""><BR>
-			Ci: <INPUT TYPE=Text NAME="ci" VALUE=""><BR>
+			Ci: <INPUT TYPE=Text NAME="ci" VALUE="" onkeydown="return soloEnteros(this, event);"><BR>
 			Nombre: <INPUT TYPE=Text NAME="nombre" VALUE=""><BR>
 			Correo: <INPUT TYPE=Text NAME="correo" VALUE=""><BR>
 

@@ -71,10 +71,14 @@ if ($_SESSION["rol"] == '3') {
 			<div class="templatemo_topmenu">
 				<ul>
       				<li><a href="../index.html" >Inicio</a></li>
-      				<li><a href="listaMenuDiario.php" >Menus</a></li>
-      				<li><a href="#">Promociones</a></li>
-      				<li><a href="../ReservaMesas/index.php" class="current">Reservas</a></li>
-      				<li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+      				<li><a href="../Pedidos/index.php" >Pedidos</a></li>
+      				<li><a href="../Menus/listaMenuDiario.php" >Menus</a></li>
+				    <li><a href="../Ordenes/index.php">Ordenes</a></li>
+				    <li><a href="../Pensionados/listaPensionados.php">Pensionados</a></li>
+				    <li><a href="../Productos/listaProductos.php">Productos</a></li>
+				    <li><a href="../principalMarketing.php">Promociones</a></li>
+				    <li><a href="index.php" class="current">Reservas</a></li>
+				    <li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Reserva de mesas<br></div>
