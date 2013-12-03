@@ -49,7 +49,7 @@ if ($_SESSION["rol"] != '1') {
 				    <li><a href="../Productos/listaProductos.php">Productos</a></li>
 				    <li><a href="../principalMarketing.php">Promociones</a></li>
 				    <li><a href="../Reservas/index.php" >Reservas</a></li>
-				    <li><a href="listaUsuarios.php" class="current">Iniciar Sesion</a></li>
+				    <li><a href="login.php" class="current">Iniciar Sesion</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Lista de Usuarios<br></div>

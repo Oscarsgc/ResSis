@@ -1,3 +1,4 @@
+<?php include ("../seguridad.php");?>
 <?php
 require("../db/conexion_db.php");
 //vemos si el usuario y contraseña es váildo

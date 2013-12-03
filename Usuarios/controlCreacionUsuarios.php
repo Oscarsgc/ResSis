@@ -1,3 +1,4 @@
+<?php include ("../seguridad.php");?>
 <?php require("../db/conexion_db.php"); ?>
 <?php
 	$login = $_POST["usuario"];
@@ -14,7 +15,7 @@
 			header ("Location: crearUsuario.php");
 		}
 		else{
-			$res = mysql_query("INSERT INTO usuarios VALUES ('$login', MD5('$pass'), '$ci', '$nombre', '$correo', '$rol', '1')");
+			$res = mysql_query("INSERT INTO usuarios VALUES ('$login', MD5('$pass'), '$ci', '$nombre', '$correo', '$rol', 'NULL', 'NULL', '1')");
 			if($res != false){
 				mysql_close($db);
 				//echo "Usuario Creado";

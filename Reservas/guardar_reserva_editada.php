@@ -43,14 +43,10 @@ while($row = mysql_fetch_row($res)){
 if(!$existe)
 {
 	$codigo = $_POST["codigo"];
-	echo $codigo;
-	echo $hora;
-	echo $fecha;
 	$nombre = $_POST["nombre"];
 	$res = mysql_query("UPDATE reserva_mesa SET num_mesa='$mesa', nombre_cliente='$nombre', fecha='$fecha', hora='$hora',estado='1' WHERE cod_reserva_mesa='$codigo'");
 	mysql_close($db);
-	echo mysql_error();
-	//header("Location: index.php");
+	header("Location: index.php");
 } else {
 	echo "La mesa ya se encuentra reservada esa hora";
 }
