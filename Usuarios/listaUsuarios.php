@@ -27,11 +27,11 @@ if ($_SESSION["rol"] != '1') {
 				echo "<TD>".$row[2]."</TD>";	
 				echo "<TD>".$row[3]."</TD>";	
 				echo "<TD>".$row[4]."</TD>";
-				echo "<TD>"."<a href=\"ver_perfil.php?aux=$id\">Ver Usuario</a>"."</TD>";
+				echo "<TD>"."<a href=\"ver_perfil.php?aux=$login\">Ver Usuario</a>"."</TD>";
 				if ($estado=='1') {
-					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Eliminar</a>"."</TD>";
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$login&estado=$estado\">Eliminar</a>"."</TD>";
 				} else {
-					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$id&estado=$estado\">Reincorporar</a>"."</TD>";
+					echo "<TD>"."<a href=\"eliminar_usuario.php?aux=$login&estado=$estado\">Reincorporar</a>"."</TD>";
 				}
 				echo "</TR>";
 				

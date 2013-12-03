@@ -4,19 +4,14 @@
 	$now = new DateTime();
 	date_timezone_set($now, timezone_open('America/La_Paz'));
 	$fecha = $now->format('Y-m-d H:i:s');
-	echo $fecha."<br>";
 	$cant_platos = $_POST["cantSel1"];
 	$cant_bebidas = $_POST["cantSel2"];
 	$cant_guarniciones = $_POST["cantSel3"];
 
 	$nombre=$_POST["nombre"];
-	echo $nombre."<br>";
 	$nit=$_POST["nit"];
-	echo $nit."<br>";
 	$dir=$_POST["dir"];
-	echo $dir."<br>";
 	$telf=$_POST["telf"];
-	echo $telf."<br>";
 	$id="";
 	$usuario = $_SESSION["usuario"];
 
