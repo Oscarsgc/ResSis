@@ -5,8 +5,32 @@
 	<link href="../CSS/templatemo_style.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
+
 </HEAD>
 <BODY>
+<script type="text/javascript">
+	function soloEnteros(objeto, e){
+
+             var keynum
+             var keychar
+             var numcheck
+             if(window.event){ 
+                keynum = e.keyCode
+				}
+           else if(e.which){ 
+            keynum = e.which
+          }
+             if((keynum>=35 && keynum<=37) ||keynum==8||keynum==9||keynum==46||keynum==39) {
+            return true;
+
+            }
+  			if((keynum>=95&&keynum<=105)||(keynum>=48&&keynum<=57)){
+           	 return true;
+          	}else {
+            	return false;
+           }
+    	}
+</script>
 	<?php 
 		$id=$_GET["aux"];
 		$db = mysql_connect("localhost", "root", "root");
@@ -36,11 +60,11 @@
 		<CENTER>
 		<form action="guardarPensionadoEditado.php" method="POST">
   			Codigo: <?php echo $data[0]?> <input type="hidden" name="codigo" value="<?php echo $data[0]?>"/> </br>
-  			Ci: <input type="text" name="ci" value="<?php echo $data[1]?>"/> </br>
+  			Ci: <input type="text" name="ci" value="<?php echo $data[1]?>" onkeydown="return soloEnteros(this, event);"/> </br>
   			Nombre: <input type="text" name="nombre" value="<?php echo $data[2]?>"/> </br>
   			Direccion: <input type="text" name="direccion" value="<?php echo $data[3]?>"/></br>
-  			Telefono: <input type="text" name="telefono" value="<?php echo $data[4]?>"/></br>
-  			Estado: <input type="text" name="estado" value="<?php echo $data[5]?>"/></br>
+  			Telefono: <input type="text" name="telefono" value="<?php echo $data[4]?>" onkeydown="return soloEnteros(this, event);"/></br>
+  			Estado: <input type="text" name="estado" value="<?php echo $data[5]?>" onkeydown="return soloEnteros(this, event);"/></br>
   			<input type="Submit" name="Guardar" value="Guardar">
 		</form>
 		<form action="listaPensionados.php">

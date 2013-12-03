@@ -93,6 +93,28 @@
         	parentDiv.appendChild(element);
         }
 
+
+        function soloEnteros(objeto, e){
+
+             var keynum
+             var keychar
+             var numcheck
+             if(window.event){ 
+                keynum = e.keyCode
+				}
+           else if(e.which){ 
+            keynum = e.which
+          }
+             if((keynum>=35 && keynum<=37) ||keynum==8||keynum==9||keynum==46||keynum==39) {
+            return true;
+
+            }
+  			if((keynum>=95&&keynum<=105)||(keynum>=48&&keynum<=57)){
+           	 return true;
+          	}else {
+            	return false;
+           }
+    	}
     </script>
 
 	</HEAD>
@@ -119,10 +141,10 @@
 		<div id="templatemo_content_section">
 		<CENTER>
 		<form id="registro" name="registro" action="guardar_pedido.php" method="post">
-			Nit: <input type="text" name="nit" /><br>
+			Nit: <input type="text" name="nit" onkeydown="return soloEnteros(this, event);"/><br>
 			Nombre: <input type="text" name="nombre"/><br>
 			Direccion: <input type="text" name="dir" /><br>
-			Telefono: <input type="text" name="telf"/><br>
+			Telefono: <input type="text" name="telf" onkeydown="return soloEnteros(this, event);"/><br>
 			<br>
 			Seleccione los productos y ponga la cantidad: <br>
 			<div id="main1">

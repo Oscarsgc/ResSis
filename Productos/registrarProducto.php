@@ -6,6 +6,42 @@
 	<link href="../CSS/templatemo_style.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
+		<script type="text/javascript">
+	function soloEnteros(objeto, e){
+
+             var keynum
+             var keychar
+             var numcheck
+             if(window.event){ 
+                keynum = e.keyCode
+				}
+           else if(e.which){ 
+            keynum = e.which
+          }
+             if((keynum>=35 && keynum<=37) ||keynum==8||keynum==9||keynum==46||keynum==39) {
+            return true;
+
+            }
+  			if((keynum>=95&&keynum<=105)||(keynum>=48&&keynum<=57)){
+           	 return true;
+          	}else {
+            	return false;
+           }
+    	}
+    	function dosDecimales(){    
+   var objeto = objeto2;
+     var posicion = objeto.value.indexOf('.');
+     var decimal = 2;
+        if(objeto.value.length - posicion < decimal){
+            objeto.value = objeto.value.substr(0,objeto.value.length-1);                                        
+          }else {
+           objeto.value = objeto.value.substr(0,posicion+decimal+1);                                            
+
+        }
+      return;
+     }
+
+</script>
 	</HEAD>
 	</HEAD>
 	<BODY>
@@ -39,7 +75,7 @@
 				<OPTION VALUE="2">Bebida</OPTION>
 				<OPTION VALUE="3">Guarnicion</OPTION>
 			</SELECT>	<BR><BR>
-		Precio: <INPUT TYPE="Text" NAME="precio"><BR><BR>
+		Precio: <INPUT TYPE="Text" NAME="precio" onkeydown="return soloEnteros(this, event);"><BR><BR>
 		<INPUT TYPE=Hidden NAME="estado" value='1'><BR><BR>
 		<INPUT TYPE=Submit NAME="ingresar" VALUE="Ingresar">
 				<INPUT TYPE=Reset NAME="borrar" VALUE="Borrar">

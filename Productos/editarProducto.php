@@ -7,6 +7,29 @@
 
 
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
+		<script type="text/javascript">
+	function soloEnteros(objeto, e){
+
+             var keynum
+             var keychar
+             var numcheck
+             if(window.event){ 
+                keynum = e.keyCode
+				}
+           else if(e.which){ 
+            keynum = e.which
+          }
+             if((keynum>=35 && keynum<=37) ||keynum==8||keynum==9||keynum==46||keynum==39) {
+            return true;
+
+            }
+  			if((keynum>=95&&keynum<=105)||(keynum>=48&&keynum<=57)){
+           	 return true;
+          	}else {
+            	return false;
+           }
+    	}
+</script>
 </HEAD>
 <BODY>
 	<?php 
@@ -45,8 +68,8 @@
 				<OPTION VALUE="2">Bebida</OPTION>
 				<OPTION VALUE="3">Guarnicion</OPTION>
 			</SELECT>	  		<BR><BR>	
-  			Precio: <input type="text" name="precio" value="<?php echo $data[3]?>"/></br>
-  			Estado: <input type="text" name="estado" value="<?php echo $data[2]?>"/></br>
+  			Precio: <input type="text" name="precio" value="<?php echo $data[3]?>" onkeydown="return soloEnteros(this, event);"/></br>
+  			Estado: <input type="text" name="estado" value="<?php echo $data[2]?>" onkeydown="return soloEnteros(this, event);"/></br>
   			<input type="Submit" name="Guardar" value="Guardar">
 		</form>
 		<form action="listaProductos.php">
