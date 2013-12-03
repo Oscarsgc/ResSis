@@ -47,8 +47,8 @@
   			CI: <input type="text" name="ci" value="<?php echo $data[2]; ?>"/> </br>
   			Nombre: <input type="text" name="nombre" value="<?php echo $data[3]; ?>"/> </br>
   			Correo: <input type="text" name="correo" value="<?php echo $data[4]; ?>"/></br>
-  			Direccion: <input type="text" name="dir" value="<?php echo $data[5]; ?>"><br><br>
-  			Telefono: <input type="text" name="telf" value="<?php echo $data[6]; ?>"><br><br>
+  			Direccion: <input type="text" name="dir" value="<?php echo $data[6]; ?>"><br><br>
+  			Telefono: <input type="text" name="telf" value="<?php echo $data[7]; ?>"><br><br>
   			<input type="Submit" name="Guardar" value="Guardar">
 		</form>
 		<form action="perfil.php" method="get">

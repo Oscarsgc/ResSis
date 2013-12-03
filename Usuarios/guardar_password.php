@@ -7,12 +7,13 @@ $nuevo = $_POST["nuevo"];
 $conf = $_POST["conf"];
 $res = mysql_query("SELECT password FROM usuarios WHERE login='$login'");
 $row = mysql_fetch_row($res);
-if($nuevo == $conf && $antiguo == $row[0]){
-	$res = mysql_query("UPDATE reserva_mesa SET ci='$ci', nombre='$nombre', correo='$correo', direccion='$dir', telefono='$telf' WHERE login='$login'");
+if($nuevo == $conf && MD5($antiguo) == $row[0]){
+	$pass = MD5($nuevo);
+	$res = mysql_query("UPDATE usuarios SET password='$pass' WHERE login='$login'");
 	mysql_close($db);
 	echo mysql_error();
-	echo "Password editado correctamente";
+	header("Location: perfil.php?aux=$login");
 }
 else
-	header("Location: editar_password.php?axu=$login");
+	header("Location: editar_password.php?aux=$login");
 ?>

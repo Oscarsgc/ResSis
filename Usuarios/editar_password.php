@@ -12,8 +12,6 @@
 	<?php require("../db/conexion_db.php") ?>
 </HEAD>
 <BODY>
-
-<?php include ("../seguridad.php");?>
 <div id="templatemo_container">
 			<div class="templatemo_topmenu">
 				<ul>
@@ -39,9 +37,9 @@
 	<CENTER>
 		<form action="guardar_password.php" method="POST">
   			Login: <?php echo $id; ?><input type="hidden" name="login" value="<?php echo $id; ?>"/> </br>
-  			Password: <input type="text" name="antiguo"/> </br>
-  			Nuevo Password: <input type="text" name="nuevo"/> </br>
-  			Confirmacion Password: <input type="text" name="conf"/></br>
+  			Password: <input type="password" name="antiguo"/> </br>
+  			Nuevo Password: <input type="password" name="nuevo"/> </br>
+  			Confirmacion Password: <input type="password" name="conf"/></br>
   			<input type="Submit" name="Guardar" value="Guardar">
 		</form>
 		<form action="perfil.php" method="get">
