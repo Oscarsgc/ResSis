@@ -115,6 +115,7 @@ if ($_SESSION["rol"] == '3') {
 				    <li><a href="../principalMarketing.php">Promociones</a></li>
 				    <li><a href="../ReservaMesas/index.php">Reservas</a></li>
 				    <li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+				    <li><a href="../Usuarios/perfil.php">Perfil</a></li>
       			</ul>
 			 </div>
 			

@@ -31,6 +31,7 @@ if ($_SESSION["rol"] == '3') {
 				    <li><a href="../principalMarketing.php">Promociones</a></li>
 				    <li><a href="index.php" class="current">Reservas</a></li>
 				    <li><a href="../Usuarios/login.php">Iniciar Sesion</a></li>
+				    <li><a href="../Usuarios/perfil.php">Perfil</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Editar Reserva de mesa<br></div>

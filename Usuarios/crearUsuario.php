@@ -44,6 +44,7 @@
 				    <li><a href="../principalMarketing.php">Promociones</a></li>
 				    <li><a href="../Reservas/index.php" >Reservas</a></li>
 				    <li><a href="listaUsuarios.php" class="current">Iniciar Sesion</a></li>
+				    <li><a href="/perfil.php">Perfil</a></li>
       			</ul>
 			 </div>
 			<div id="templatemo_topsection">Crear Usuarios<br></div>
