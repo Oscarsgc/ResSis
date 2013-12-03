@@ -1,3 +1,4 @@
+<?php include ("../seguridad.php");?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -8,14 +9,16 @@
 		<script type="text/javascript" src="../CSS/reflection.js"></script>
 		<?php require("../db/conexion_db.php");
 			$cod=$_GET["aux"];
-			$res= mysql_query("SELECT nit, nombre, direccion, telefono, fecha, estado FROM pedido WHERE cod_pedido='$cod'");
+			$res= mysql_query("SELECT * FROM pedido WHERE cod_pedido='$cod'");
 			$row=mysql_fetch_row($res);
-			$nit = $row[0];
-			$nombre = $row[1];
-			$dir = $row[2];
-			$telf = $row[3];
-			$fecha = date_create($row[4])->format("d-m-Y H:i");
-			$estado = $row[5];
+			$nit = $row[1];
+			$nombre = $row[2];
+			$dir = $row[3];
+			$telf = $row[4];
+			$fecha = date_create($row[5])->format("d-m-Y H:i");
+			$estado = $row[6];
+			$entregado = $row[7];
+			$usuario = $row[8];
 			$total = 0;
 			
 			function obtener_productos(){
@@ -66,12 +69,13 @@
 	
 		<div id="templatemo_content_section">
 		<CENTER>
-		<H1> pedido Numero: <?php echo $cod; ?></H1>
+		<H1> Pedido Numero: <?php echo $cod; ?></H1>
 			<b><FONT SIZE=4> Nit: </FONT></b>&nbsp; <?php echo $nit; ?><br><br>
 			<b><FONT SIZE=4> Nombre: </FONT></b>&nbsp; <?php echo $nombre; ?><br><br>
 			<b><FONT SIZE=4> Direccion: </FONT></b>&nbsp; <?php echo $dir; ?><br><br>
 			<b><FONT SIZE=4> Telefono: </FONT></b>&nbsp; <?php echo $telf; ?><br><br>
 			<b><FONT SIZE=4> Fecha: </FONT></b>&nbsp; <?php echo $fecha; ?><br><br>
+			<b><FONT SIZE=4> Fecha: </FONT></b>&nbsp; <?php echo $usuario; ?><br><br>
 			<TABLE BORDER=3>
 				<TR>
 					<TH>Codigo Producto</TH>
@@ -89,8 +93,21 @@
 			<form action="cancelar_pedido.php" name="cancel" method="get">
 				<input type="hidden" name="aux" value="<?php echo $cod; ?>">
 				<input type="hidden" name="estado" value="<?php echo $estado; ?>">
-				<input type="submit" name="cancelar" value="<?php if ($estado==1) echo 'Cancelar'; else echo 'Reestablecer';?>">
+				<input type="submit" name="cancelar" value="<?php if ($estado==1) echo 'Cancelar'; else echo 'Restablecer';?>">
 			</form>
+			<?php if ($_SESSION["rol"] != '3') {
+					echo "<form action='entregar_pedido.php' name='entregar' method='get'>
+							<input type='hidden' name='aux' value='$cod'>
+							<input type='hidden' name='entregado' value='$entregado'>
+							<input type='submit' name='entrega' value=";
+					if ($entregado==0)
+					 	echo "'Entregado'";
+					else
+					 	echo "'No entregado'";
+					echo "></form>";
+				}	
+			?>
+
 			<a href="index.php">Ver Lista</a><br>
 			<a href="../salir.php">Salir</a>
 		</CENTER>

@@ -1,19 +1,20 @@
-
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <?php require("../conexion_db.php"); ?>
 <?php
-date_default_timezone_set('GMT-4');
-
+	$now = new DateTime();
+	date_timezone_set($now, timezone_open('America/La_Paz'));
+	$fecha = $now->format('Y-m-d');
+	
 	$dia = $_POST["dia"];
 
 	$estado = $_POST["estado"];
 
 	$cant = $_POST["cantSel"];
-
-	$value=$_POST["Producto"];
-	echo $value;
-	//$fecha = new mktime();
-	//echo date('Y-m-d H:i:s', $fecha);
-	$fecha = date(DATE_RFC2822);
 
 
 	$res = mysql_query("INSERT INTO menu_dia VALUES ('NULL','$dia', '$fecha', 'NULL', '$estado')");
@@ -31,6 +32,6 @@ date_default_timezone_set('GMT-4');
 		$i=$i+1;
 	}
 
-	//header ("Location: listaMenuDiario.php");
+	header ("Location: listaMenuDiario.php");
 	
 ?>

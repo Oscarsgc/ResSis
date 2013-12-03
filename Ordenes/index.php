@@ -1,3 +1,9 @@
+<?php include ("../seguridad.php");?>
+<?php 
+if ($_SESSION["rol"] == '3') {
+	header("Location: ../Usuarios/login.php");
+}	
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 	<HEAD>
@@ -19,19 +25,19 @@
 				if ($row[4])
 					echo "<TD>"."<a href=\"cancelar_orden.php?aux=$id&estado=$estado\">Cancelar</a>"."</TD>";
 				else
-					echo "<TD>"."<a href=\"cancelar_orden.php?aux=$id&estado=$estado\">Reestablecer</a>"."</TD>";
+					echo "<TD>"."<a href=\"cancelar_orden.php?aux=$id&estado=$estado\">Restablecer</a>"."</TD>";
 				echo "</TR>";
 			}
 		}
 
 		function obtener_datos($mesa, $nombre, $estado){
 			if (!is_null($mesa)) {
-				$res=mysql_query("SELECT * FROM orden where estado='$estado' and num_mesa = '$mesa'");
+				$res=mysql_query("SELECT * FROM orden where estado='$estado' and num_mesa = '$mesa' ORDER BY cod_orden DESC");
 			} else {
 				if (!is_null($nombre)){
-					$res=mysql_query("SELECT * FROM orden where estado='$estado' and nombre_cliente like '%$nombre%'");
+					$res=mysql_query("SELECT * FROM orden where estado='$estado' and nombre_cliente like '%$nombre%' ORDER BY cod_orden DESC");
 				} else {
-					$res=mysql_query("SELECT * FROM orden where estado='$estado'");
+					$res=mysql_query("SELECT * FROM orden where estado='$estado' ORDER BY cod_orden DESC");
 				}
 			}
 			mostrar_datos($res);

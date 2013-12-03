@@ -1,5 +1,6 @@
 <?php include ("seguridad.php");?>
 <?php
+$_SESSION["autentificado"]="no";
 session_destroy();
-header("Location: array.php");
+header("Location: index.php");
 ?>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-12-2013 a las 03:03:15
+-- Tiempo de generación: 03-12-2013 a las 20:57:05
 -- Versión del servidor: 5.6.12-log
 -- Versión de PHP: 5.4.16
 
@@ -79,7 +79,17 @@ CREATE TABLE IF NOT EXISTS `menu_dia` (
   `fecha_fin` date DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_menu_dia`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `menu_dia`
+--
+
+INSERT INTO `menu_dia` (`cod_menu_dia`, `dia`, `fecha_inicio`, `fecha_fin`, `estado`) VALUES
+(1, 'miercoles', '0000-00-00', '0000-00-00', 1),
+(2, 'lunes', '2013-12-03', '0000-00-00', 1),
+(3, 'lunes', '2013-12-03', '0000-00-00', 1),
+(4, 'miercoles', '2013-12-03', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -94,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `orden` (
   `fecha` datetime NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_orden`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=8 ;
 
 --
 -- Volcado de datos para la tabla `orden`
@@ -102,7 +112,8 @@ CREATE TABLE IF NOT EXISTS `orden` (
 
 INSERT INTO `orden` (`cod_orden`, `num_mesa`, `nombre_cliente`, `fecha`, `estado`) VALUES
 (5, 2, 'Fernandez', '2013-12-02 16:09:03', 1),
-(6, 3, 'Luis', '2013-12-02 20:13:43', 1);
+(6, 3, 'Luis', '2013-12-02 20:13:43', 0),
+(7, 1, 'Oso', '2013-12-03 15:55:04', 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `orden_producto` (
   `cod_producto` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
   `cantidad` int(2) NOT NULL,
   PRIMARY KEY (`cod_orden_producto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `orden_producto`
@@ -131,7 +142,10 @@ INSERT INTO `orden_producto` (`cod_orden_producto`, `cod_orden`, `cod_producto`,
 (6, 6, 'QR', 3),
 (7, 6, '', 0),
 (8, 6, 'PQ', 1),
-(9, 6, '', 0);
+(9, 6, '', 0),
+(10, 7, 'PM1', 2),
+(11, 7, '', 0),
+(12, 7, '', 0);
 
 -- --------------------------------------------------------
 
@@ -147,16 +161,17 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `telefono` bigint(12) NOT NULL,
   `fecha` datetime NOT NULL,
   `estado` tinyint(1) NOT NULL,
+  `entregado` tinyint(1) NOT NULL,
+  `usuario` varchar(12) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`cod_pedido`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`cod_pedido`, `nombre`, `nit`, `direccion`, `telefono`, `fecha`, `estado`) VALUES
-(1, '123', 0, 'C. Antonio Ibañez', 4421567, '2013-12-02 21:00:40', 0),
-(2, 'Pedro', 123, 'C. Antonio Ibañez', 4421567, '2013-12-02 21:03:35', 1);
+INSERT INTO `pedido` (`cod_pedido`, `nombre`, `nit`, `direccion`, `telefono`, `fecha`, `estado`, `entregado`, `usuario`) VALUES
+(3, 'Fernandez', 123, 'C. Antonio IbaÃ±ez', 4421567, '2013-12-03 16:13:54', 1, 0, 'admin');
 
 -- --------------------------------------------------------
 
@@ -170,19 +185,28 @@ CREATE TABLE IF NOT EXISTS `pedido_producto` (
   `cod_producto` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
   `cantidad` int(2) NOT NULL,
   PRIMARY KEY (`cod_penido_producto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `pedido_producto`
 --
 
 INSERT INTO `pedido_producto` (`cod_penido_producto`, `cod_pedido`, `cod_producto`, `cantidad`) VALUES
-(1, 1, 'PM1', 2),
-(2, 1, 'QR', 3),
-(3, 1, '', 0),
-(4, 2, 'PM1', 2),
-(5, 2, 'QR', 3),
-(6, 2, '', 0);
+(7, 0, 'PM1', 3),
+(8, 0, '', 0),
+(9, 0, 'PQ', 1),
+(10, 0, 'PM1', 1),
+(11, 0, 'QR', 3),
+(12, 0, 'PQ', 1),
+(13, 0, 'PM1', 2),
+(14, 0, '', 0),
+(15, 0, '', 0),
+(16, 0, 'PM1', 2),
+(17, 0, '', 0),
+(18, 0, '', 0),
+(19, 3, 'PM1', 3),
+(20, 3, '', 0),
+(21, 3, '', 0);
 
 -- --------------------------------------------------------
 
@@ -198,14 +222,15 @@ CREATE TABLE IF NOT EXISTS `pensionados` (
   `telefono` bigint(12) NOT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_pensionado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `pensionados`
 --
 
 INSERT INTO `pensionados` (`cod_pensionado`, `ci`, `nombre`, `direccion`, `telefono`, `estado`) VALUES
-(1, 123, 'piro', 'ho', 456, 1);
+(1, 123, 'piro', 'ho', 456, 1),
+(2, 123, 'Fernandez', 'ho', 564, 0);
 
 -- --------------------------------------------------------
 
@@ -256,7 +281,17 @@ CREATE TABLE IF NOT EXISTS `producto_menu_dia` (
   `cod_menu_dia` int(8) NOT NULL,
   `cod_producto` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
   PRIMARY KEY (`cod_producto_menu_dia`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `producto_menu_dia`
+--
+
+INSERT INTO `producto_menu_dia` (`cod_producto_menu_dia`, `cod_menu_dia`, `cod_producto`) VALUES
+(1, 0, 'PM1'),
+(2, 2, 'PM1'),
+(3, 3, 'PM1'),
+(4, 4, 'PM1');
 
 -- --------------------------------------------------------
 
@@ -303,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `reserva_mesa` (
   `estado` tinyint(1) NOT NULL,
   `terminada` tinyint(1) NOT NULL,
   PRIMARY KEY (`cod_reserva_mesa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `reserva_mesa`
@@ -317,7 +352,8 @@ INSERT INTO `reserva_mesa` (`cod_reserva_mesa`, `num_mesa`, `nombre_cliente`, `f
 (15, 12, 'Luis', '2013-12-20', '21:00:00', 1, 0),
 (16, 2, 'Fernandez', '2014-02-20', '15:00:00', 1, 0),
 (17, 2, 'Fernandez', '2014-02-20', '16:00:00', 1, 0),
-(18, 2, 'Fernandez', '2013-12-01', '20:00:00', 1, 1);
+(18, 2, 'Fernandez', '2013-12-01', '20:00:00', 1, 1),
+(19, 5, 'Prueba', '2013-12-12', '18:50:00', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -332,6 +368,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(40) COLLATE latin1_spanish_ci NOT NULL,
   `correo` varchar(30) COLLATE latin1_spanish_ci NOT NULL,
   `rol` int(1) NOT NULL,
+  `direccion` varchar(50) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `telefono` bigint(12) DEFAULT NULL,
   `estado` tinyint(1) NOT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -340,8 +378,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`login`, `password`, `ci`, `nombre`, `correo`, `rol`, `estado`) VALUES
-('admin', '21232f297a57a5a743894a0e4a801fc3', 15324, 'Admininistrador', 'admin@gmail.com', 1, 1);
+INSERT INTO `usuarios` (`login`, `password`, `ci`, `nombre`, `correo`, `rol`, `direccion`, `telefono`, `estado`) VALUES
+('admin', '202cb962ac59075b964b07152d234b70', 123, 'Admininistrador', 'admin@gmail.com', 1, NULL, NULL, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
